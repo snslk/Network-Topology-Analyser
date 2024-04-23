@@ -1,0 +1,46 @@
+	NETWORK TOPOLOGY ANALYSER
+
+To analyse a given network topology ,
+I am using Matrix to store the information about each system.
+Each ith row represents connections(can send msg from ith to jth node) of ith node/system with every other node present in the system.
+
+Considering :
+-> no system is connected to itself i.e. all i,j| (i=j) => M[i][j]=0 
+-> all i,j | i sends message to jth node => M[i][j]=1
+-> all i,j | i cannot send message to jth node => M[i][j]=0
+
+Network topology analyser can detect following topologies:-
+	1)Mesh topology
+	2)Star topology
+	3)Ring topology(unidirectional)
+	4)Hybrid topology
+	5)point to point connection
+	6)no connection 
+
+Mesh topology : 
+In Mesh topology each system can send msg to every other system excluding itself(assumption) present in the network.
+N = number of systems present in the Network.
+Matrix of connections will be of NxN .
+We can surely say that one system will send msg to (N-1) systems.So,total number of connections will be N*(N-1).
+ 
+Star topology:
+In Star topology every system sends msg to only one system that system is generally known as Hub . Hub recieves the msg and forward/send it to destination system .
+N=number of systems present in the Network.
+Matrix of connections will be NxN.
+We can surely say that Hub can send msg to (N-1) excluding itself and rest (N-1) systems will send to only one system i.e Hub.
+total number of connections will be (N-1)+(N-1)= 2N-2
+
+Ring topology (Unidirectional) :
+In Ring topology each system can send msg to some system and recieve msg from one system i.e.each system have one indegree and one outdegree .
+N=number of systems in a Network.
+Matrix of connection will be NxN.
+total number of connections will be N.
+
+Point to Point Connection:
+there only two systems in a Network.
+i.e. total number connections will be 2.
+
+Hybrid topology : 
+In Hybrid Topology systems are connected using multiple topologies .
+Total number of connections > N and not equal to 0 or 2.
+    
